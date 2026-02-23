@@ -1,88 +1,327 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="mk">
 <head>
-  <meta charset="UTF-8">
-  <title>Grupa Feniks</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Група Феникс | Официјална веб-страница</title>
+  <meta name="description" content="Група Феникс – музика, настапи и резервации. Видеа, линкови и контакт." />
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: black;
-      color: white;
-      text-align: center;
+    :root{
+      --bg:#070712;
+      --card:rgba(255,255,255,.07);
+      --line:rgba(255,255,255,.14);
+      --text:#f6f6ff;
+      --muted:rgba(246,246,255,.72);
+      --accent:#ffb000;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 20% 10%, rgba(255,176,0,.18), transparent 55%),
+        radial-gradient(900px 600px at 80% 25%, rgba(120,80,255,.18), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .container{width:min(1100px,92%); margin:0 auto;}
+    .header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter: blur(12px);
+      background: rgba(7,7,18,.65);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:12px;
+    }
+    .brand{font-weight:900; letter-spacing:.6px}
+    .menu{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
+    .menu a{ text-decoration:none; opacity:.9 }
+    .menu a:hover{ opacity:1 }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid rgba(255,255,255,.18);
+      transition: transform .12s ease;
+      background: var(--accent);
+      color:#0b0b12;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn.secondary{
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+    }
+    .btn.small{ padding:9px 12px; border-radius:10px; font-weight:800 }
+
+    .hero{ padding:70px 0 30px; }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.35fr .85fr;
+      gap:18px;
+      align-items:start;
+    }
+    .tag{
+      display:inline-block;
+      padding:7px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+      margin-bottom:14px;
+      font-size:13px;
+    }
+    h1{
+      margin:0 0 12px;
+      font-size: clamp(34px, 4.2vw, 56px);
+      line-height:1.04;
+      letter-spacing:-.4px;
+    }
+    .lead{ margin:0; color:var(--muted); font-size:18px; max-width:60ch; }
+    .actions{ display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 10px; }
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+    .chip{
+      font-size:12px;
+      padding:7px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
     }
 
-    header {
-      padding: 60px 20px;
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .section{
+      padding: 56px 0;
+      border-top: 1px solid var(--line);
+    }
+    .section.alt{ background: rgba(255,255,255,.03); }
+    h2{ margin:0 0 10px; font-size:30px; }
+    h3{ margin:0 0 10px; }
+    .muted{ color: var(--muted); }
+    .small{ font-size: 13px; }
+
+    .links{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+    .link{ text-decoration:none; border-bottom:1px dashed var(--line); width:fit-content; }
+    .link:hover{ opacity:.9; }
+
+    .videoGrid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .video iframe{
+      width:100%;
+      aspect-ratio:16/9;
+      border:0;
+      border-radius: 14px;
     }
 
-    h1 {
-      font-size: 48px;
-      margin-bottom: 10px;
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      margin-top: 16px;
     }
 
-    .button {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 20px;
-      background: orange;
-      color: black;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
+    .table{ padding:0; overflow:hidden; }
+    .row{
+      display:grid;
+      grid-template-columns: 140px 1fr 1fr 120px;
+      gap:10px;
+      padding:12px 14px;
+      border-top:1px solid var(--line);
+    }
+    .row.head{
+      border-top:0;
+      background: rgba(255,255,255,.04);
+      font-weight:900;
     }
 
-    .section {
-      padding: 40px 20px;
+    .footer{
+      border-top: 1px solid var(--line);
+      padding: 22px 0;
+      background: rgba(0,0,0,.18);
     }
+    .footerRow{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 
-    iframe {
-      width: 90%;
-      max-width: 560px;
-      height: 315px;
-      margin: 15px 0;
-    }
-
-    footer {
-      padding: 30px;
-      font-size: 14px;
-      opacity: 0.7;
+    @media (max-width: 920px){
+      .heroGrid, .twoCol { grid-template-columns: 1fr; }
+      .videoGrid{ grid-template-columns: 1fr; }
+      .row{ grid-template-columns: 1fr; gap:4px; }
     }
   </style>
 </head>
 
 <body>
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">ГРУПА ФЕНИКС</div>
+      <nav class="menu">
+        <a href="#videos">Видеа</a>
+        <a href="#shows">Настапи</a>
+        <a href="#about">За нас</a>
+        <a href="#contact" class="btn small">Резервации</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <h1>GRUPA FENIKS</h1>
-  <p>Music • Performances • Booking</p>
+  <main class="hero">
+    <div class="container heroGrid">
+      <div>
+        <div class="tag">Официјална веб-страница</div>
+        <h1>Музика • Настапи • Резервации</h1>
+        <p class="lead">
+          Додади една реченица: стил/жанр + град + за што сте најпознати (свадби, настани, концерти).
+        </p>
 
-  <a class="button" href="#videos">Watch Videos</a>
-  <a class="button" href="#contact">Book Us</a>
-</header>
+        <div class="actions">
+          <a class="btn" href="#contact">Контакт за резервации</a>
+          <a class="btn secondary" href="#videos">Гледај видеа</a>
+          <a class="btn secondary" href="https://youtube.com" target="_blank" rel="noopener">YouTube канал</a>
+        </div>
 
-<div class="section" id="videos">
-  <h2>Latest Video</h2>
+        <div class="chips">
+          <span class="chip">Live Band</span>
+          <span class="chip">Свадби & Настапи</span>
+          <span class="chip">Штип</span>
+        </div>
+      </div>
 
-  <iframe src="https://www.youtube.com/embed/VIDEO_ID"
-  frameborder="0"
-  allowfullscreen></iframe>
+      <div class="card">
+        <h3>Линкови</h3>
+        <div class="links">
+          <a class="link" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a class="link" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+          <a class="link" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+          <a class="link" href="tel:+38970000000">Тел: +389 70 000 000</a>
+          <a class="link" href="mailto:booking@grupafeniks.com">booking@grupafeniks.com</a>
+        </div>
+        <p class="muted small">Ќе ги замениме линковите со вашите вистински.</p>
+      </div>
+    </div>
+  </main>
 
-</div>
+  <section id="videos" class="section alt">
+    <div class="container">
+      <h2>Видеа</h2>
+      <p class="muted">Заменете ги VIDEO_ID со вашите YouTube видеа (делот после v= ).</p>
 
-<div class="section" id="contact">
-  <h2>Booking</h2>
-  <p>Email us for weddings, events & concerts:</p>
+      <div class="videoGrid">
+        <div class="card video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
+          <p class="muted small">Видео 1</p>
+        </div>
+        <div class="card video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
+          <p class="muted small">Видео 2</p>
+        </div>
+        <div class="card video">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
+          <p class="muted small">Видео 3</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <a class="button" href="mailto:booking@grupafeniks.com">
-    booking@grupafeniks.com
-  </a>
-</div>
+  <section id="shows" class="section">
+    <div class="container">
+      <h2>Настапи</h2>
+      <p class="muted">Овде ставете ваши датуми (или пишете “достапни за резервации”).</p>
 
-<footer>
-  © 2026 Grupa Feniks • Official Website
-</footer>
+      <div class="card table">
+        <div class="row head">
+          <div>Датум</div><div>Град</div><div>Локација</div><div>Инфо</div>
+        </div>
+        <div class="row">
+          <div>2026-03-10</div><div>Штип</div><div>—</div><div><a class="link" href="#contact">Контакт</a></div>
+        </div>
+        <div class="row">
+          <div>2026-04-05</div><div>Скопје</div><div>—</div><div><a class="link" href="#contact">Контакт</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section id="about" class="section alt">
+    <div class="container">
+      <h2>За нас</h2>
+      <div class="twoCol">
+        <div>
+          <p>
+            Напишете кратка биографија (5–7 реда): жанр, репертоар, искуство, настани што ги покривате.
+          </p>
+          <p class="muted small">
+            Пример: “Група Феникс е live бенд од Штип со репертоар за свадби, приватни настани и концерти…”
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>EPK / Материјали</h3>
+          <div class="links">
+            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме PDF/слики.');return false;">Download EPK (PDF)</a>
+            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме фотографии.');return false;">Прес фотографии</a>
+            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме технички рајдер.');return false;">Технички рајдер</a>
+          </div>
+          <p class="muted small">Ова може и да го тргнеме ако не ви треба.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Резервации / Контакт</h2>
+      <div class="twoCol">
+        <div class="card">
+          <h3>Пишете ни</h3>
+          <p class="muted">За свадби, настани, концерти, корпоративни прослави.</p>
+
+          <div class="actions">
+            <a class="btn" href="mailto:booking@grupafeniks.com?subject=Резервација%20-%20Група%20Феникс&body=Здраво%2C%0A%0AСакаме%20резервација%20за%3A%0A-%20Датум%3A%0A-%20Град%3A%0A-%20Настан%3A%0A-%20Времетраење%3A%0A-%20Контакт%3A%0A%0AБлагодарам!">Email</a>
+            <a class="btn secondary" href="tel:+38970000000">Повикување</a>
+          </div>
+
+          <p class="muted small">
+            Заменете го телефонскиот број и email со ваши вистински.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Социјални мрежи</h3>
+          <div class="links">
+            <a class="link" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+            <a class="link" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
+            <a class="link" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+          </div>
+          <p class="muted small">Ставете ги вашите точни линкови.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footerRow">
+      <span>© <span id="y"></span> Група Феникс</span>
+      <span class="muted small">Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
