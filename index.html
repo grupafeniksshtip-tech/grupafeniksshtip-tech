@@ -4,17 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Група Феникс | Официјална веб-страница</title>
-  <meta name="description" content="Група Феникс – музика, настапи и резервации. Видеа, линкови и контакт." />
+  <meta name="description" content="Група Феникс (од 1996) – музика, настапи и резервации. Оригинални композиции, луѓето зад звукот, репертоар и контакт." />
 
   <style>
     :root{
-      --bg:#070712;
-      --card:rgba(255,255,255,.07);
-      --line:rgba(255,255,255,.14);
+      --bg:#070812;
+      --card: rgba(255,255,255,.07);
+      --line: rgba(255,255,255,.14);
       --text:#f6f6ff;
-      --muted:rgba(246,246,255,.72);
+      --muted: rgba(246,246,255,.72);
       --accent:#ffb000;
+      --accent2:#7b5cff;
+      --shadow: 0 14px 40px rgba(0,0,0,.35);
+      --radius: 18px;
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
@@ -23,15 +27,15 @@
       color:var(--text);
       background:
         radial-gradient(900px 600px at 20% 10%, rgba(255,176,0,.18), transparent 55%),
-        radial-gradient(900px 600px at 80% 25%, rgba(120,80,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 80% 25%, rgba(123,92,255,.18), transparent 55%),
         var(--bg);
     }
     a{color:inherit}
-    .container{width:min(1100px,92%); margin:0 auto;}
+    .container{width:min(1120px,92%); margin:0 auto;}
     .header{
-      position:sticky; top:0; z-index:20;
+      position:sticky; top:0; z-index:50;
       backdrop-filter: blur(12px);
-      background: rgba(7,7,18,.65);
+      background: rgba(7,8,18,.68);
       border-bottom:1px solid var(--line);
     }
     .nav{
@@ -39,33 +43,62 @@
       padding:14px 0;
       gap:12px;
     }
-    .brand{font-weight:900; letter-spacing:.6px}
-    .menu{display:flex; gap:16px; align-items:center; flex-wrap:wrap; justify-content:flex-end}
-    .menu a{ text-decoration:none; opacity:.9 }
-    .menu a:hover{ opacity:1 }
+    .brand{
+      font-weight:900;
+      letter-spacing:.7px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      white-space:nowrap;
+    }
+    .logoDot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 18px rgba(255,176,0,.45);
+    }
+
+    .menu{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .menu a{
+      text-decoration:none; opacity:.9; font-weight:650;
+      padding:8px 10px; border-radius: 10px;
+    }
+    .menu a:hover{ opacity:1; background: rgba(255,255,255,.05); }
+
     .btn{
       display:inline-flex; align-items:center; justify-content:center;
       padding:12px 16px;
       border-radius:12px;
       text-decoration:none;
-      font-weight:800;
+      font-weight:850;
       border:1px solid rgba(255,255,255,.18);
       transition: transform .12s ease;
       background: var(--accent);
       color:#0b0b12;
+      box-shadow: 0 10px 26px rgba(255,176,0,.18);
     }
     .btn:hover{ transform: translateY(-1px); }
     .btn.secondary{
       background: transparent;
       color: var(--text);
       border: 1px solid var(--line);
+      box-shadow: none;
     }
-    .btn.small{ padding:9px 12px; border-radius:10px; font-weight:800 }
+    .btn.small{ padding:9px 12px; border-radius:10px; font-weight:850 }
+    .ghost{
+      display:inline-flex; align-items:center; gap:8px;
+      text-decoration:none; color: var(--muted);
+      border-bottom:1px dashed var(--line);
+      width: fit-content;
+    }
+    .ghost:hover{ color: var(--text); opacity: .95; }
 
-    .hero{ padding:70px 0 30px; }
+    .hero{ padding:74px 0 34px; }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.35fr .85fr;
+      grid-template-columns: 1.25fr .85fr;
       gap:18px;
       align-items:start;
     }
@@ -83,11 +116,17 @@
       margin:0 0 12px;
       font-size: clamp(34px, 4.2vw, 56px);
       line-height:1.04;
-      letter-spacing:-.4px;
+      letter-spacing:-.6px;
     }
-    .lead{ margin:0; color:var(--muted); font-size:18px; max-width:60ch; }
+    .lead{
+      margin:0;
+      color:var(--muted);
+      font-size:18px;
+      max-width: 62ch;
+    }
     .actions{ display:flex; gap:12px; flex-wrap:wrap; margin:18px 0 10px; }
-    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; }
+
+    .chips{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
     .chip{
       font-size:12px;
       padding:7px 10px;
@@ -100,26 +139,75 @@
     .card{
       background: var(--card);
       border: 1px solid var(--line);
-      border-radius: 18px;
+      border-radius: var(--radius);
       padding: 18px;
+      box-shadow: var(--shadow);
     }
+
     .section{
-      padding: 56px 0;
+      padding: 58px 0;
       border-top: 1px solid var(--line);
     }
     .section.alt{ background: rgba(255,255,255,.03); }
-    h2{ margin:0 0 10px; font-size:30px; }
+    h2{ margin:0 0 10px; font-size:30px; letter-spacing:-.2px; }
     h3{ margin:0 0 10px; }
     .muted{ color: var(--muted); }
     .small{ font-size: 13px; }
+    .kicker{ color: var(--muted); margin:0 0 18px; }
 
-    .links{ display:flex; flex-direction:column; gap:10px; margin-top:8px; }
-    .link{ text-decoration:none; border-bottom:1px dashed var(--line); width:fit-content; }
-    .link:hover{ opacity:.9; }
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 14px;
+      margin-top: 16px;
+      align-items:start;
+    }
 
+    /* Images */
+    .coverWrap{
+      margin-top: 16px;
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: rgba(255,255,255,.03);
+    }
+    .coverImg{
+      width:100%;
+      height: 340px;
+      object-fit: cover;
+      display:block;
+    }
+    .imgCaption{
+      padding: 12px 14px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top:1px solid var(--line);
+      background: rgba(0,0,0,.18);
+    }
+    .inlineImg{
+      width:100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      display:block;
+    }
+    .portrait{
+      width:100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      display:block;
+      margin-bottom: 12px;
+      background: rgba(255,255,255,.03);
+    }
+
+    /* Videos */
     .videoGrid{
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
       gap: 14px;
       margin-top: 16px;
     }
@@ -130,26 +218,51 @@
       border-radius: 14px;
     }
 
-    .twoCol{
+    /* People */
+    .people{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
       margin-top: 16px;
     }
-
-    .table{ padding:0; overflow:hidden; }
-    .row{
-      display:grid;
-      grid-template-columns: 140px 1fr 1fr 120px;
-      gap:10px;
-      padding:12px 14px;
-      border-top:1px solid var(--line);
-    }
-    .row.head{
-      border-top:0;
-      background: rgba(255,255,255,.04);
+    .personTitle{
       font-weight:900;
+      margin: 0 0 6px;
+      letter-spacing: -.2px;
     }
+
+    /* Repertoire table/cards */
+    .grid2{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+      align-items:start;
+    }
+
+    /* Contact */
+    .contactGrid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:14px;
+      margin-top:16px;
+      align-items:start;
+    }
+    .contactLine{ margin: 10px 0; color: var(--muted); }
+    .contactLine strong{ color: var(--text); }
+    .pill{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:9px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      text-decoration:none;
+      width: fit-content;
+    }
+    .pill:hover{ color: var(--text); opacity:.95; }
 
     .footer{
       border-top: 1px solid var(--line);
@@ -158,10 +271,13 @@
     }
     .footerRow{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
 
-    @media (max-width: 920px){
-      .heroGrid, .twoCol { grid-template-columns: 1fr; }
+    @media (max-width: 980px){
+      .heroGrid, .twoCol, .contactGrid, .grid2{ grid-template-columns: 1fr; }
       .videoGrid{ grid-template-columns: 1fr; }
-      .row{ grid-template-columns: 1fr; gap:4px; }
+      .people{ grid-template-columns: 1fr; }
+      .coverImg{ height: 260px; }
+      .inlineImg{ height: 220px; }
+      .portrait{ height: 240px; }
     }
   </style>
 </head>
@@ -169,145 +285,302 @@
 <body>
   <header class="header">
     <div class="container nav">
-      <div class="brand">ГРУПА ФЕНИКС</div>
+      <div class="brand"><span class="logoDot"></span> ГРУПА ФЕНИКС</div>
       <nav class="menu">
-        <a href="#videos">Видеа</a>
-        <a href="#shows">Настапи</a>
-        <a href="#about">За нас</a>
-        <a href="#contact" class="btn small">Резервации</a>
+        <a href="#about">За Нас</a>
+        <a href="#original">Оригинални композиции</a>
+        <a href="#people">Луѓето зад звукот</a>
+        <a href="#repertoire">Репертоар</a>
+        <a href="#contact" class="btn small">Контакт</a>
       </nav>
     </div>
   </header>
 
+  <!-- HERO -->
   <main class="hero">
     <div class="container heroGrid">
       <div>
-        <div class="tag">Официјална веб-страница</div>
-        <h1>Музика • Настапи • Резервации</h1>
+        <div class="tag">Официјална веб-страница • Од 1996</div>
+        <h1>Музиката не е само звук. Таа е момент што останува.</h1>
         <p class="lead">
-          Додади една реченица: стил/жанр + град + за што сте најпознати (свадби, настани, концерти).
+          Група Феникс – емоција, енергија и атмосфера за свадби, прослави и настани.
+          Од традиционално македонско оро до модерни хитови – ја свириме вашата приказна.
         </p>
 
         <div class="actions">
-          <a class="btn" href="#contact">Контакт за резервации</a>
-          <a class="btn secondary" href="#videos">Гледај видеа</a>
-          <a class="btn secondary" href="https://youtube.com" target="_blank" rel="noopener">YouTube канал</a>
+          <a class="btn" href="#contact">Резервации</a>
+          <a class="btn secondary" href="#original">Оригинални песни</a>
+          <a class="btn secondary" href="#people">Состав</a>
         </div>
 
         <div class="chips">
-          <span class="chip">Live Band</span>
-          <span class="chip">Свадби & Настапи</span>
-          <span class="chip">Штип</span>
+          <span class="chip">Свадби</span>
+          <span class="chip">Крштевки</span>
+          <span class="chip">Веридби</span>
+          <span class="chip">Матурски вечери</span>
+          <span class="chip">Деловни прослави</span>
         </div>
       </div>
 
-      <div class="card">
-        <h3>Линкови</h3>
-        <div class="links">
-          <a class="link" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-          <a class="link" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-          <a class="link" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
-          <a class="link" href="tel:+38970000000">Тел: +389 70 000 000</a>
-          <a class="link" href="mailto:booking@grupafeniks.com">booking@grupafeniks.com</a>
+      <aside class="card">
+        <h3>Брз контакт</h3>
+        <p class="muted small">Кликни за повик или email.</p>
+
+        <p class="contactLine"><strong>Горан:</strong> <a class="ghost" href="tel:+38970571946">070 571 946</a></p>
+        <p class="contactLine"><strong>Александар:</strong> <a class="ghost" href="tel:+38978382190">078 382 190</a></p>
+        <p class="contactLine"><strong>Email:</strong> <a class="ghost" href="mailto:grupafeniksshtip@gmail.com">grupafeniksshtip@gmail.com</a></p>
+
+        <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+          <a class="pill" target="_blank" rel="noopener" href="https://www.instagram.com/todoroski.a?igsh=MXJxb3V3cW02NmZkOQ==">Instagram</a>
+          <a class="pill" target="_blank" rel="noopener" href="https://www.facebook.com/grupafeniksstip">Facebook</a>
         </div>
-        <p class="muted small">Ќе ги замениме линковите со вашите вистински.</p>
-      </div>
+
+        <p class="muted small" style="margin-top:14px;">
+          ✅ Богат репертоар • ✅ Флексибилност • ✅ Професионален пристап
+        </p>
+      </aside>
     </div>
   </main>
 
-  <section id="videos" class="section alt">
+  <!-- ZA NAS -->
+  <section id="about" class="section">
     <div class="container">
-      <h2>Видеа</h2>
-      <p class="muted">Заменете ги VIDEO_ID со вашите YouTube видеа (делот после v= ).</p>
+      <h2>За Нас</h2>
+      <p class="kicker">Музиката не е само звук. Таа е емоција, енергија и момент што останува засекогаш.</p>
 
-      <div class="videoGrid">
-        <div class="card video">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_1" allowfullscreen></iframe>
-          <p class="muted small">Видео 1</p>
-        </div>
-        <div class="card video">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_2" allowfullscreen></iframe>
-          <p class="muted small">Видео 2</p>
-        </div>
-        <div class="card video">
-          <iframe src="https://www.youtube.com/embed/VIDEO_ID_3" allowfullscreen></iframe>
-          <p class="muted small">Видео 3</p>
-        </div>
+      <!-- Cover image -->
+      <div class="coverWrap">
+        <img class="coverImg" src="Cel bend cover.jpg" alt="Група Феникс - цел бенд (cover)" />
+        <div class="imgCaption">Група Феникс – цел бенд</div>
       </div>
-    </div>
-  </section>
 
-  <section id="shows" class="section">
-    <div class="container">
-      <h2>Настапи</h2>
-      <p class="muted">Овде ставете ваши датуми (или пишете “достапни за резервации”).</p>
-
-      <div class="card table">
-        <div class="row head">
-          <div>Датум</div><div>Град</div><div>Локација</div><div>Инфо</div>
-        </div>
-        <div class="row">
-          <div>2026-03-10</div><div>Штип</div><div>—</div><div><a class="link" href="#contact">Контакт</a></div>
-        </div>
-        <div class="row">
-          <div>2026-04-05</div><div>Скопје</div><div>—</div><div><a class="link" href="#contact">Контакт</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="section alt">
-    <div class="container">
-      <h2>За нас</h2>
       <div class="twoCol">
-        <div>
-          <p>
-            Напишете кратка биографија (5–7 реда): жанр, репертоар, искуство, настани што ги покривате.
+        <div class="card">
+          <h3>Група Феникс</h3>
+          <p class="muted">
+            Група Феникс постои од 1996 година, основана од Тодороски Горан – вокал, клавијатура и армоника,
+            музичар со долгогодишна посветеност и искрена љубов кон сцената. Неговата страст кон македонската песна
+            и живата изведба е темелот врз кој се гради препознатливиот звук на групата.
           </p>
-          <p class="muted small">
-            Пример: “Група Феникс е live бенд од Штип со репертоар за свадби, приватни настани и концерти…”
+          <p class="muted">
+            Во 2012 година се приклучува втората генерација – Тодороски Александар, вокал и гитара,
+            носејќи современа енергија и нов музички израз. Денес, Група Феникс претставува совршен баланс
+            помеѓу традицијата и модерниот звук.
           </p>
+          <p class="muted"><strong>👉 Ние не свириме само програма – ја свириме вашата приказна.</strong></p>
         </div>
 
         <div class="card">
-          <h3>EPK / Материјали</h3>
-          <div class="links">
-            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме PDF/слики.');return false;">Download EPK (PDF)</a>
-            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме фотографии.');return false;">Прес фотографии</a>
-            <a class="link" href="#" onclick="alert('Подоцна ќе додадеме технички рајдер.');return false;">Технички рајдер</a>
-          </div>
-          <p class="muted small">Ова може и да го тргнеме ако не ви треба.</p>
+          <h3>Музика за секоја прослава</h3>
+          <p class="muted">Настапуваме на:</p>
+          <ul class="muted" style="margin:0; padding-left:18px;">
+            <li>свадби</li>
+            <li>крштевки</li>
+            <li>веридби</li>
+            <li>матурски и апсолвентски вечери</li>
+            <li>деловни прослави</li>
+            <li>приватни и свечени настани</li>
+          </ul>
+          <p class="muted" style="margin-top:14px;">
+            Расположливи инструменти: клавијатура, гитара, бас гитара, гајда, зурла, тапани, армоника,
+            виолина, кларинет и саксофон.
+          </p>
+        </div>
+      </div>
+
+      <!-- Second band photo under "За нас" -->
+      <div style="margin-top:14px;">
+        <img class="inlineImg" src="Cel bend 1.jpg" alt="Група Феникс - цел бенд" />
+      </div>
+
+      <!-- Aleksandar & Goran image near the story -->
+      <div class="twoCol" style="margin-top:14px;">
+        <div class="card">
+          <h3>Традиција + современа енергија</h3>
+          <p class="muted">
+            Тодороски Горан и Тодороски Александар – баланс помеѓу традицијата и модерниот звук.
+          </p>
+        </div>
+        <div>
+          <img class="inlineImg" src="Aleksandar i Goran.png" alt="Александар и Горан" />
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ORIGINALNI -->
+  <section id="original" class="section alt">
+    <div class="container">
+      <h2>Оригинални композиции</h2>
+      <p class="muted">
+        Покрај настапите на приватни и јавни настани, Група Феникс активно учествува и на фестивалската сцена и има свои оригинални музички проекти.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Тодороски Александар</h3>
+          <p class="muted"><strong>🏆 Победник на Макфест 2021</strong> со песната „Под Исто Небо“</p>
+          <p class="muted small">Музика и текст: Ристо Самарџиев<br/>Аранжман: Давор Јордановски</p>
+
+          <div class="videoGrid">
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/s58In9_k81Y" title="Под Исто Небо - YouTube" allowfullscreen></iframe>
+              <p class="muted small" style="margin:8px 0 0;">Видео: Александар</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Тодороски Горан</h3>
+          <p class="muted small"><strong>„Валерија“</strong> – Музика: Мирче Кикиритков • Текст: Мирче Кикиритков • Аранжман: Љупчо Стефанов – Цоцо</p>
+          <p class="muted small"><strong>„Ах таа серенада“ (Битола 2024)</strong> – Музика и текст: Боби Поповски • Аранжман: Љупчо Трајковски – Фис</p>
+          <p class="muted small"><strong>„Штипските Кафеани“</strong> – Музика/Текст: Мирче Кикиритков • Аранжман: Љупчо Стефанов – Цоцо</p>
+
+          <div class="videoGrid">
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/u1mFJquxpmw" title="Горан - Видео 1" allowfullscreen></iframe>
+              <p class="muted small" style="margin:8px 0 0;">Видео: Горан</p>
+            </div>
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/uz4Es36qWl8" title="Горан - Видео 2" allowfullscreen></iframe>
+              <p class="muted small" style="margin:8px 0 0;">Видео: Горан</p>
+            </div>
+            <div class="video">
+              <iframe src="https://www.youtube.com/embed/FzDG-ri_z3Y" title="Горан - Видео 3" allowfullscreen></iframe>
+              <p class="muted small" style="margin:8px 0 0;">Видео: Горан</p>
+            </div>
+          </div>
+
+          <p class="muted" style="margin-top:14px;">
+            Група Феникс е повеќе од бенд – тоа е семејна музичка традиција што трае, расте и се обновува со секоја нова сцена.
+            Вашиот момент заслужува Феникс. 🔥
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE -->
+  <section id="people" class="section">
+    <div class="container">
+      <h2>Луѓето зад звукот</h2>
+      <p class="muted">
+        Секој настан има своја енергија. Нашата мисија е таа енергија да ја претвориме во музика.
+        Група Феникс е тим од искусни музичари – синхронизирани, професионални и целосно посветени на атмосферата.
+      </p>
+
+      <div class="people">
+        <div class="card">
+          <img class="portrait" src="Goran.jpg" alt="Тодороски Горан" />
+          <p class="personTitle">🎹 Тодороски Горан</p>
+          <p class="muted"><strong>Клавијатура · Вокал · Армоника</strong></p>
+          <p class="muted">Основач и движечка сила на групата. Човекот што ја постави музичката визија на Феникс и повеќе од две децении ја носи сцената со сигурност и страст.</p>
+        </div>
+
+        <div class="card">
+          <img class="portrait" src="Aleksandar Makfest.jpg" alt="Тодороски Александар" />
+          <p class="personTitle">🎸 Тодороски Александар</p>
+          <p class="muted"><strong>Гитара · Вокал</strong></p>
+          <p class="muted">Современа енергија и свеж музички израз. Глас што спојува традиција и модерна сцена.</p>
+        </div>
+
+        <div class="card">
+          <img class="portrait" src="Mite.png" alt="Мите Бизоев" />
+          <p class="personTitle">🎸 Мите Бизоев</p>
+          <p class="muted"><strong>Бас гитара</strong></p>
+          <p class="muted">Темелот на ритамот. Стабилност и длабочина во секоја изведба.</p>
+        </div>
+
+        <div class="card">
+          <img class="portrait" src="Goce.png" alt="Гоце Чолески" />
+          <p class="personTitle">🥁 Гоце Чолески</p>
+          <p class="muted"><strong>Тапани · Народен тапан</strong></p>
+          <p class="muted">Ритам што ја подигнува атмосферата – од традиционално оро до модерна прослава.</p>
+        </div>
+
+        <div class="card">
+          <img class="portrait" src="Vejbi.png" alt="Вејби Џеладинов" />
+          <p class="personTitle">🎷 Вејби Џеладинов</p>
+          <p class="muted"><strong>Кларинет · Саксофон</strong></p>
+          <p class="muted">Емоција во секој тон. Мелодија што ја носи душата на прославата.</p>
+        </div>
+
+        <div class="card">
+          <img class="portrait" src="Ivan.jpg" alt="Иван Богатинов" />
+          <p class="personTitle">🎻 Иван Богатинов</p>
+          <p class="muted"><strong>Виолина</strong></p>
+          <p class="muted">Прецизност, чувство и елеганција – звук што остава впечаток.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REPERTOAR -->
+  <section id="repertoire" class="section alt">
+    <div class="container">
+      <h2>Репертоар</h2>
+      <p class="muted">
+        Од традиционално одење по невеста со звукот на гајда, зурла и народен тапан,
+        до елегантен прием со виолина и инструментална музика. Од првиот танц – емотивен и незаборавен,
+        до моментот кога вистинската прослава започнува.
+      </p>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Од традиција до современа забава</h3>
+          <p class="muted">
+            Македонските ора ја креваат салата на нозе. Басот го држи пулсот. Тапаните ја носат енергијата.
+            Кларинетот и саксофонот ја водат мелодијата. Гитарата и клавијатурата ја градат динамиката.
+          </p>
+          <p class="muted">
+            Од традиционални македонски песни, преку балкански хитови, до модерна и странска музика што ја заокружува вечерта.
+            Од солза радосница до еуфорија на подиумот.
+          </p>
+          <p class="muted"><strong>Група Феникс – звукот на вашата љубовна приказна. 🔥</strong></p>
+        </div>
+
+        <div>
+          <div class="coverWrap">
+            <img class="coverImg" src="atmosfera.JPG" alt="Атмосфера" />
+            <div class="imgCaption">Атмосфера од настап</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container">
-      <h2>Резервации / Контакт</h2>
-      <div class="twoCol">
+      <h2>Контакт</h2>
+      <p class="muted">За резервации, прашања и понуди – пишете или јавете се.</p>
+
+      <div class="contactGrid">
         <div class="card">
-          <h3>Пишете ни</h3>
-          <p class="muted">За свадби, настани, концерти, корпоративни прослави.</p>
+          <h3>Резервации</h3>
+
+          <p class="contactLine"><strong>📞 Горан:</strong> <a class="ghost" href="tel:+38970571946">070 571 946</a></p>
+          <p class="contactLine"><strong>📞 Александар:</strong> <a class="ghost" href="tel:+38978382190">078 382 190</a></p>
+          <p class="contactLine"><strong>✉️ Email:</strong> <a class="ghost" href="mailto:grupafeniksshtip@gmail.com">grupafeniksshtip@gmail.com</a></p>
 
           <div class="actions">
-            <a class="btn" href="mailto:booking@grupafeniks.com?subject=Резервација%20-%20Група%20Феникс&body=Здраво%2C%0A%0AСакаме%20резервација%20за%3A%0A-%20Датум%3A%0A-%20Град%3A%0A-%20Настан%3A%0A-%20Времетраење%3A%0A-%20Контакт%3A%0A%0AБлагодарам!">Email</a>
-            <a class="btn secondary" href="tel:+38970000000">Повикување</a>
+            <a class="btn" href="mailto:grupafeniksshtip@gmail.com?subject=Резервација%20-%20Група%20Феникс&body=Здраво%2C%0A%0AСакаме%20резервација%20за%3A%0A-%20Датум%3A%0A-%20Град%3A%0A-%20Тип%20настан%3A%0A-%20Локација%3A%0A-%20Контакт%3A%0A%0AБлагодарам!">Испрати Email</a>
+            <a class="btn secondary" href="tel:+38970571946">Повикување</a>
           </div>
 
-          <p class="muted small">
-            Заменете го телефонскиот број и email со ваши вистински.
-          </p>
+          <p class="muted small">Instagram и Facebook линковите се додадени десно.</p>
         </div>
 
         <div class="card">
           <h3>Социјални мрежи</h3>
-          <div class="links">
-            <a class="link" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
-            <a class="link" href="https://facebook.com" target="_blank" rel="noopener">Facebook</a>
-            <a class="link" href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+            <a class="pill" target="_blank" rel="noopener" href="https://www.instagram.com/todoroski.a?igsh=MXJxb3V3cW02NmZkOQ==">Instagram</a>
+            <a class="pill" target="_blank" rel="noopener" href="https://www.facebook.com/grupafeniksstip">Facebook</a>
           </div>
-          <p class="muted small">Ставете ги вашите точни линкови.</p>
+
+          <p class="muted small" style="margin-top:14px;">
+            Ако сакаш, можеме да додадеме и “Gallery” секција со повеќе фотографии (6–12) под репертоар.
+          </p>
         </div>
       </div>
     </div>
@@ -315,7 +588,7 @@
 
   <footer class="footer">
     <div class="container footerRow">
-      <span>© <span id="y"></span> Група Феникс</span>
+      <span>© <span id="y"></span> Група Феникс • Официјална веб-страница</span>
       <span class="muted small">Hosted on GitHub Pages</span>
     </div>
   </footer>
